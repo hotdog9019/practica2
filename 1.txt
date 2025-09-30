@@ -1,0 +1,36 @@
+using System;
+class Program
+{
+    static void Main()
+    {
+        double x;
+        do
+        {
+            Console.Write("Введите x (|x| < 1): ");
+            x = Convert.ToDouble(Console.ReadLine());
+        } while (Math.Abs(x) >= 1);
+        double epsilon;
+        do
+        {
+            Console.Write("Введите точность ε (0 < ε < 0.01): ");
+            epsilon = Convert.ToDouble(Console.ReadLine());
+        } while (epsilon <= 0 || epsilon >= 0.01);
+        int n;
+        do
+        {
+            Console.Write("Введите номер члена ряда n (n >= 0): ");
+        } while (!int.TryParse(Console.ReadLine(), out n) || n < 0);
+        double sum = 0.0;
+        int k = 0;
+        double term;
+        do
+        {
+            term = Math.Pow(x, 2 * k + 1) / (2 * k + 1);
+            sum += term;
+            k++;
+        } while (Math.Abs(term) >= epsilon);
+        Console.WriteLine($"Значение arcth({x}) с точностью {epsilon} равно {sum}");
+        double nthTerm = Math.Pow(x, 2 * n + 1) / (2 * n + 1);
+        Console.WriteLine($"{n}-й член ряда: {nthTerm}");
+    }
+}
