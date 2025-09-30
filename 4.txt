@@ -1,0 +1,28 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int low = 0;
+        int high = 63;
+
+        for (int i = 0; i < 7; i++)
+        {
+            int mid = (low + high) / 2;
+            Console.Write($"Ваше число больше {mid}? (1-да, 0-нет): ");
+            int answer = Convert.ToInt32(Console.ReadLine());
+
+            if (answer == 1)
+            {
+                low = mid + 1;
+            }
+            else
+            {
+                high = mid;
+            }
+        }
+
+        Console.WriteLine($"Ваше число: {low}");
+    }
+}
