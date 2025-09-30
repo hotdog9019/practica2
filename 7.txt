@@ -1,0 +1,38 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Введите n: ");
+        int n = int.Parse(Console.ReadLine());
+        Console.Write("Введите a: ");
+        int a = int.Parse(Console.ReadLine());
+        Console.Write("Введите b: ");
+        int b = int.Parse(Console.ReadLine());
+        Console.Write("Введите w: ");
+        int w = int.Parse(Console.ReadLine());
+        Console.Write("Введите h: ");
+        int h = int.Parse(Console.ReadLine());
+
+        int maxD = 0;
+        for (int d = 0; ; d++)
+        {
+            int moduleWidth = a + 2 * d;
+            int moduleHeight = b + 2 * d;
+            int modulesInWidth = w / moduleWidth;
+            int modulesInHeight = h / moduleHeight;
+            int totalModules = modulesInWidth * modulesInHeight;
+
+            if (totalModules >= n)
+            {
+                maxD = d; 
+            }
+            else
+            {
+                break; 
+            }
+        }
+        Console.WriteLine($"Ответ d = {maxD}");
+    }
+}
