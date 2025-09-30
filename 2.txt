@@ -1,0 +1,25 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.Write("Введите номер билета: ");
+        int ticketNumber = Convert.ToInt32(Console.ReadLine());
+        if (ticketNumber < 100000 || ticketNumber > 999999)
+        {
+            Console.WriteLine("Ошибка: номер билета должен быть шестизначным.");
+            return;
+        }
+        int d1 = ticketNumber / 100000;             
+        int d2 = (ticketNumber / 10000) % 10;       
+        int d3 = (ticketNumber / 1000) % 10;        
+        int d4 = (ticketNumber / 100) % 10;         
+        int d5 = (ticketNumber / 10) % 10;          
+        int d6 = ticketNumber % 10;                  
+        int sumFirstThree = d1 + d2 + d3;
+        int sumLastThree = d4 + d5 + d6;
+        bool isLucky = sumFirstThree == sumLastThree;
+        Console.WriteLine(isLucky);
+    }
+}
